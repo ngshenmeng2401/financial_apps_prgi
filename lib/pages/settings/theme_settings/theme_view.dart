@@ -1,15 +1,15 @@
-import 'package:financial_apps_prgi/pages/settings/settings_controller.dart';
+import 'package:financial_apps_prgi/pages/settings/theme_settings/theme_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class ThemeView extends GetView<SettingsController> {
-
+class ThemeView extends GetView<ThemeSettingController> {
+  const ThemeView({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Change Theme"),
+        title: Text("Change Theme".tr),
       ),
       body: SingleChildScrollView(
         child: Center(
@@ -18,13 +18,13 @@ class ThemeView extends GetView<SettingsController> {
             shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
             child: Column(
               children: [
-                GetBuilder<SettingsController>(
-                  init: SettingsController(),
+                GetBuilder<ThemeSettingController>(
+                  init: ThemeSettingController(),
                   builder: (controller) {
                     return ListTile(
-                      title: const Text("Dark_Theme", style: TextStyle(fontSize: 18)),
-                      subtitle: const Text("Dark_Theme_Desciption",
-                          style: TextStyle(fontSize: 14)),
+                      title: Text("Dark_Theme".tr, style: const TextStyle(fontSize: 18)),
+                      subtitle: Text("Dark_Theme_Desciption".tr,
+                          style: const TextStyle(fontSize: 14)),
                       trailing: Radio(
                         activeColor: Colors.blue[200],
                         value: true,
@@ -36,13 +36,13 @@ class ThemeView extends GetView<SettingsController> {
                     );
                   },
                 ),
-                GetBuilder<SettingsController>(
-                  init: SettingsController(),
+                GetBuilder<ThemeSettingController>(
+                  init: ThemeSettingController(),
                   builder: (controller) {
                     return ListTile(
-                      title: const Text("Light_Theme", style: TextStyle(fontSize: 18)),
-                      subtitle: const Text("Light_Theme_Desciption",
-                          style: TextStyle(fontSize: 14)),
+                      title: Text("Light_Theme".tr, style: const TextStyle(fontSize: 18)),
+                      subtitle: Text("Light_Theme_Desciption".tr,
+                          style: const TextStyle(fontSize: 14)),
                       trailing: Radio(
                         activeColor: Colors.blue[200],
                         value: false,

@@ -17,9 +17,9 @@ class GoldPriceWidget extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const Text("Gold Price:",
+        Text("Gold_Price:".tr,
           textAlign: TextAlign.start,
-          style: TextStyle(
+          style: const TextStyle(
             fontSize: 22
           ),),
         const SizedBox(height: 20),
@@ -59,12 +59,12 @@ class GoldPriceWidget extends StatelessWidget {
                       style: const TextStyle(
                         fontSize: 20,
                       ),),
-                    Text("MYR " + homeController.goldPriceModel[index].sellPrice.toString() + " per gram (sell)"),
-                    Text("MYR " + homeController.goldPriceModel[index].buyPrice.toString() + " per gram (buy)"),
+                    Text("MYR " + homeController.goldPriceModel[index].sellPrice.toString() + " " + "per_gram_(sell)".tr),
+                    Text("MYR " + homeController.goldPriceModel[index].buyPrice.toString() + " " + "per_gram_(buy)".tr),
                     Text(homeController.goldPriceModel[index].fee != 0 
-                      ? "Management Fee: MYR " + homeController.goldPriceModel[index].fee.toString()
+                      ? "Management_Fee:_MYR ".tr + homeController.goldPriceModel[index].fee.toString()
                       : ""),
-                    Text(homeController.goldPriceModel[index].remark.toString())
+                    Text("Facility:".tr + " " + homeController.goldPriceModel[index].remark.toString())
                   ],
                 ),
               )

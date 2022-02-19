@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class NotfoundScreen extends StatelessWidget {
   const NotfoundScreen({ Key? key }) : super(key: key);
@@ -7,7 +8,7 @@ class NotfoundScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Not Found"),
+        title: Text("Not Found".tr),
       ),
       body: Center(
         child: Container(),

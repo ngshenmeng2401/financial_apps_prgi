@@ -46,13 +46,13 @@ class GAEUnitTIle extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text("${gaEunit.unit} unit",
+                  Text("${gaEunit.unit} " + "unit".tr,
                     style: const TextStyle(
                       fontSize: 18,
                     ),),
                   Text(gaEunit.qty == "1" 
-                    ? "${gaEunit.qty} quantity"
-                    : "${gaEunit.qty} quantities"),
+                    ? "${gaEunit.qty} " + "quantity".tr
+                    : "${gaEunit.qty} " + "quantities".tr),
                 ],
               ),
             ),

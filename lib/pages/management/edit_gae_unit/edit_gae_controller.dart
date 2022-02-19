@@ -79,13 +79,12 @@ class EditGAEUnitController extends GetxController{
     print(selectUnitType);
   }
 
-  void editGAEUnitDialog(String gaeCode, String unit, String qty, String rate, String fee, String percentage,){
+  void editGAEUnitDialog(String gaeCode, String unit, String qty, String fee, String percentage, String type){
 
     print(qty);
 
     Get.defaultDialog(
-      // title: "Are_you_sure".tr,
-      title: "Are_you_sure",
+      title: "Are_you_sure".tr,
       content: Column(
         children: const [
           Padding(padding: EdgeInsets.all(0)),
@@ -95,7 +94,7 @@ class EditGAEUnitController extends GetxController{
       textCancel: "No".tr,
       onConfirm: () {
         Get.back();
-        editGAEUnit(gaeCode, unit, qty, rate, fee, percentage);
+        editGAEUnit(gaeCode, unit, qty, fee, percentage, type);
       },
       cancelTextColor: Colors.black,
       confirmTextColor: Colors.white,
@@ -104,7 +103,7 @@ class EditGAEUnitController extends GetxController{
   }
 
   
-  void editGAEUnit(String currentCode, String currentUnit, String currentQty, String currentRate, String currentFee, String currentPercentage){
+  void editGAEUnit(String currentCode, String currentUnit, String currentQty, String currentFee, String currentPercentage, String type){
 
     String newCode = codeController.text.toString();
     String newUnit = unitController.text.toString();
@@ -112,11 +111,12 @@ class EditGAEUnitController extends GetxController{
     String newProfitRate = rateController.text.toString();
     String newFee = feeController.text.toString();
     String newPercentage = percentageController.text.toString();
+    String newType;
 
     if(newCode.isEmpty && newUnit.isEmpty && newQty.isEmpty && newProfitRate.isEmpty && newFee.isEmpty && newPercentage.isEmpty){
 
       Get.snackbar(
-        "Error","No any update",
+        "Error".tr,"No any update".tr,
         backgroundColor: Colors.white60,
         colorText: Colors.black,
         icon: const Icon(Icons.error, color: Colors.black),
@@ -127,9 +127,9 @@ class EditGAEUnitController extends GetxController{
       newCode = (codeController.text.toString() == "") ? currentCode : newCode;
       newUnit = (unitController.text.toString() == "") ? currentUnit : newUnit;
       newQty = (qtyController.text.toString() == "") ? currentQty : newQty;
-      newProfitRate = (rateController.text.toString() == "") ? currentRate : newProfitRate;
       newFee = (feeController.text.toString() == "") ? currentFee : newFee;
       newPercentage = (percentageController.text.toString() == "") ? currentPercentage : newPercentage;
+      newType = selectUnitType.value;
 
       // print(newCode);
       // print(newUnit);
@@ -138,7 +138,7 @@ class EditGAEUnitController extends GetxController{
       // print(newFee);
       // print(newPercentage);
 
-      GAERemoteService.editGAEUnit(newCode, newUnit, newQty, newProfitRate, newFee, newPercentage);
+      GAERemoteService.editGAEUnit(newCode, newUnit, newQty, newFee, newPercentage, newType);
     }
   }
 }

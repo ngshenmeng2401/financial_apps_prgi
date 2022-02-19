@@ -118,16 +118,6 @@ class EditGAEUnitView extends GetView<EditGAEUnitController> {
               ),
               const SizedBox(height: 10),
               TextField(
-                controller: editGAEController.rateController,
-                keyboardType: TextInputType.number,
-                decoration: InputDecoration(
-                  labelText: 'Profit Rate'.tr,
-                  labelStyle: const TextStyle(
-                  )
-                ),
-              ),
-              const SizedBox(height: 10),
-              TextField(
                 controller: editGAEController.feeController,
                 keyboardType: TextInputType.phone,
                 decoration: InputDecoration(
@@ -189,9 +179,9 @@ class EditGAEUnitView extends GetView<EditGAEUnitController> {
                     gaEunit.gaeCode!,
                     gaEunit.unit!,
                     gaEunit.qty!,
-                    gaEunit.rate!,
                     gaEunit.fee!,
                     gaEunit.targetPercentage!,
+                    gaEunit.type!
                   );
                 },
                 color: Colors.black,

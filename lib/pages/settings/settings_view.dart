@@ -10,7 +10,7 @@ class SettingsView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Settings"),
+        title: Text("Settings".tr),
       ),
       body: SingleChildScrollView(
         child: Center(
@@ -21,21 +21,21 @@ class SettingsView extends StatelessWidget {
               children: [
                 ListTile(
                   leading: const Icon(Icons.notifications),
-                  title: const Text("Notifications",style:TextStyle(fontSize: 18)),
+                  title: Text("Notifications".tr,style: const TextStyle(fontSize: 18)),
                   trailing: const Icon(Icons.keyboard_arrow_right),
                   onTap: (){},
                 ),
                 ListTile(
                   leading: const Icon(Icons.language),
-                  title: const Text("Language",style:TextStyle(fontSize: 18)),
+                  title: Text("Language".tr,style: const TextStyle(fontSize: 18)),
                   trailing: const Icon(Icons.keyboard_arrow_right),
                   onTap: (){
-
+                    settingsController.navigateLanguagePage();
                   },
                 ),
                 ListTile(
                   leading: const Icon(Icons.format_paint),
-                  title: const Text("Theme",style:TextStyle(fontSize: 18)),
+                  title: Text("Theme".tr,style: const TextStyle(fontSize: 18)),
                   trailing: const Icon(Icons.keyboard_arrow_right),
                   onTap: (){
                     settingsController.navigateThemePage();
@@ -43,13 +43,13 @@ class SettingsView extends StatelessWidget {
                 ),
                 ListTile(
                   leading: const Icon(Icons.info),
-                  title: const Text("About_Us",style:TextStyle(fontSize: 18)),
+                  title: Text("About_Us".tr,style: const TextStyle(fontSize: 18)),
                   trailing: const Icon(Icons.keyboard_arrow_right),
                   onTap: (){},
                 ),
                 ListTile(
                   leading: const Icon(Icons.help),
-                  title: const Text("Help_Support",style:TextStyle(fontSize: 18)),
+                  title: Text("Help_Support".tr,style: const TextStyle(fontSize: 18)),
                   trailing: const Icon(Icons.keyboard_arrow_right),
                   onTap: (){},
                 ),

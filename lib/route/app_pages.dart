@@ -5,9 +5,9 @@ import 'package:financial_apps_prgi/pages/management/edit_gae_unit/edit_gae_unit
 import 'package:financial_apps_prgi/pages/management/management_view.dart';
 import 'package:financial_apps_prgi/pages/not_found_screen.dart';
 import 'package:financial_apps_prgi/pages/report/report_view.dart';
-import 'package:financial_apps_prgi/pages/settings/settings_binding.dart';
+import 'package:financial_apps_prgi/pages/settings/language_settings/language_view.dart';
 import 'package:financial_apps_prgi/pages/settings/settings_view.dart';
-import 'package:financial_apps_prgi/pages/settings/theme_view.dart';
+import 'package:financial_apps_prgi/pages/settings/theme_settings/theme_view.dart';
 import 'package:financial_apps_prgi/pages/splash/splash_binding.dart';
 import 'package:financial_apps_prgi/pages/splash/splash_view.dart';
 import 'package:financial_apps_prgi/widgets/bottom_navigation_bar.dart';
@@ -69,13 +69,12 @@ class AppPages{
 
     GetPage(
       name: AppRoutes.LanguagesPage,
-      page: () => SettingsView(),
+      page: () => const LanguageView(),
     ),
 
     GetPage(
       name: AppRoutes.ThemePage,
-      page: () => ThemeView(),
-      binding: SettingsBinding(),
+      page: () => const ThemeView(),
     ),
   ];
 

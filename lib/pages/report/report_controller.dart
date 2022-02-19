@@ -1,5 +1,4 @@
 import 'package:financial_apps_prgi/model/gae_unit.dart';
-import 'package:financial_apps_prgi/pages/report/onhand_unit_tile.dart';
 import 'package:financial_apps_prgi/route/app_pages.dart';
 import 'package:financial_apps_prgi/service/gae_remote_service.dart';
 import 'package:flutter/material.dart';
@@ -63,8 +62,7 @@ class ManageReportController extends GetxController{
   void soldGAEUnitDialog(GaEunit gaeunit){
     
     Get.defaultDialog(
-      // title: "Are_you_sure".tr,
-      title: "Are_you_sure",
+      title: "Are_you_sure".tr,
       content: Column(
         children: const [
           Padding(padding: EdgeInsets.all(0)),
@@ -87,8 +85,7 @@ class ManageReportController extends GetxController{
   void unsoldGAEUnitDialog(GaEunit gaeunit){
     
     Get.defaultDialog(
-      // title: "Are_you_sure".tr,
-      title: "Are_you_sure",
+      title: "Are_you_sure".tr,
       content: Column(
         children: const [
           Padding(padding: EdgeInsets.all(0)),

@@ -1,5 +1,6 @@
 import 'package:financial_apps_prgi/model/gae_unit.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 
 class GAEInfoVIew extends StatelessWidget {
@@ -16,7 +17,7 @@ class GAEInfoVIew extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text("GAE Unit Info"),
+        title: Text("GAE Unit Info".tr),
       ),
       body: SingleChildScrollView(
         child: Padding(
@@ -34,10 +35,10 @@ class GAEInfoVIew extends StatelessWidget {
                         child: Container(
                           padding: const EdgeInsets.fromLTRB(10, 0, 0, 0),
                           height: screenHeight/20,
-                          child: const Align(
+                          child: Align(
                             alignment: Alignment.centerLeft,
-                            child: Text("Code:",
-                              style: TextStyle(fontSize: 18),)
+                            child: Text("Code:".tr,
+                              style: const TextStyle(fontSize: 18),)
                         )),
                       ),
                       TableCell(
@@ -58,10 +59,10 @@ class GAEInfoVIew extends StatelessWidget {
                         child: Container(
                           padding: const EdgeInsets.fromLTRB(10, 0, 0, 0),
                           height: screenHeight/20,
-                          child: const Align(
+                          child: Align(
                             alignment: Alignment.centerLeft,
-                            child: Text("Date & Time Purchased:",
-                              style: TextStyle(fontSize: 18),)
+                            child: Text("Date & Time Purchased:".tr,
+                              style: const TextStyle(fontSize: 18),)
                         )),
                       ),
                       TableCell(
@@ -70,7 +71,7 @@ class GAEInfoVIew extends StatelessWidget {
                           height: screenHeight/20,
                           child: Align(
                             alignment: Alignment.center,
-                            child: Text("${datePurchased}",
+                            child: Text(datePurchased,
                               style: const TextStyle(fontSize: 18),)
                         )),
                       ),
@@ -82,10 +83,10 @@ class GAEInfoVIew extends StatelessWidget {
                         child: Container(
                           padding: const EdgeInsets.fromLTRB(10, 0, 0, 0),
                           height: screenHeight/20,
-                          child: const Align(
+                          child:  Align(
                             alignment: Alignment.centerLeft,
-                            child: Text("Unit:",
-                              style: TextStyle(fontSize: 18),)
+                            child: Text("Unit:".tr,
+                              style: const TextStyle(fontSize: 18),)
                         )),
                       ),
                       TableCell(
@@ -106,10 +107,10 @@ class GAEInfoVIew extends StatelessWidget {
                         child: Container(
                           padding: const EdgeInsets.fromLTRB(10, 0, 0, 0),
                           height: screenHeight/20,
-                          child: const Align(
+                          child: Align(
                             alignment: Alignment.centerLeft,
-                            child: Text("Quantity(g):",
-                              style: TextStyle(fontSize: 18),)
+                            child: Text("Quantity(g):".tr,
+                              style: const TextStyle(fontSize: 18),)
                         )),
                       ),
                       TableCell(
@@ -130,10 +131,10 @@ class GAEInfoVIew extends StatelessWidget {
                         child: Container(
                           padding: const EdgeInsets.fromLTRB(10, 0, 0, 0),
                           height: screenHeight/20,
-                          child: const Align(
+                          child:  Align(
                             alignment: Alignment.centerLeft,
-                            child: Text("Profit Rate:",
-                              style: TextStyle(fontSize: 18),)
+                            child: Text("Profit Rate:".tr,
+                              style: const TextStyle(fontSize: 18),)
                         )),
                       ),
                       TableCell(
@@ -154,10 +155,10 @@ class GAEInfoVIew extends StatelessWidget {
                         child: Container(
                           padding: const EdgeInsets.fromLTRB(10, 0, 0, 0),
                           height: screenHeight/20,
-                          child: const Align(
+                          child: Align(
                             alignment: Alignment.centerLeft,
-                            child: Text("Management Fee:",
-                              style: TextStyle(fontSize: 18),)
+                            child: Text("Management Fee:".tr,
+                              style: const TextStyle(fontSize: 18),)
                         )),
                       ),
                       TableCell(
@@ -178,10 +179,10 @@ class GAEInfoVIew extends StatelessWidget {
                         child: Container(
                           padding: const EdgeInsets.fromLTRB(10, 0, 0, 0),
                           height: screenHeight/20,
-                          child: const Align(
+                          child: Align(
                             alignment: Alignment.centerLeft,
-                            child: Text("Target Percentage:",
-                              style: TextStyle(fontSize: 18),)
+                            child: Text("Target Percentage:".tr,
+                              style: const TextStyle(fontSize: 18),)
                         )),
                       ),
                       TableCell(
@@ -202,10 +203,10 @@ class GAEInfoVIew extends StatelessWidget {
                         child: Container(
                           padding: const EdgeInsets.fromLTRB(10, 0, 0, 0),
                           height: screenHeight/20,
-                          child: const Align(
+                          child: Align(
                             alignment: Alignment.centerLeft,
-                            child: Text("Type:",
-                              style: TextStyle(fontSize: 18),)
+                            child: Text("Type:".tr,
+                              style: const TextStyle(fontSize: 18),)
                         )),
                       ),
                       TableCell(

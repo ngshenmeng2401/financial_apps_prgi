@@ -31,8 +31,8 @@ class CurrencyConverter extends GetView<HomeController> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Text("Currency Converter",
-            style: TextStyle(
+          Text("Currency_Converter".tr,
+            style: const TextStyle(
               fontSize: 22
             ),),
           const SizedBox(height:10),
@@ -43,7 +43,7 @@ class CurrencyConverter extends GetView<HomeController> {
             keyboardType: TextInputType.number,
             controller: homeController.amountController,
             decoration: InputDecoration(
-              labelText: "Input Value to Convert".tr,
+              labelText: "Input_Value_to_Convert".tr,
               labelStyle: const TextStyle(
                 fontSize: 16
             ),),
@@ -86,11 +86,11 @@ class CurrencyConverter extends GetView<HomeController> {
                   );
                 },
               ),
-              const Expanded(
+              Expanded(
                 flex: 2,
-                child: Text("to",
+                child: Text("to".tr,
                 textAlign: TextAlign.center,
-                style: TextStyle(
+                style: const TextStyle(
                   fontSize: 22
                 ),),
               ),
@@ -134,14 +134,14 @@ class CurrencyConverter extends GetView<HomeController> {
           MaterialButton(
             minWidth: screenWidth/3,
             color: Colors.blue,
-            child: const Text("Convert",
-              style: TextStyle(fontSize: 20)),
+            child:  Text("Convert".tr,
+              style: const TextStyle(fontSize: 20)),
             onPressed: (){
               homeController.calCurrency(controller.selectCurrencyBase, controller.selectCurrencyFinal);
             }),
           const SizedBox(height:10),
-          const Text("Result: ",
-            style: TextStyle(fontSize: 24)),
+          Text("Result: ".tr,
+            style: const TextStyle(fontSize: 24)),
           Row(
             children: [
               GetBuilder<HomeController>(

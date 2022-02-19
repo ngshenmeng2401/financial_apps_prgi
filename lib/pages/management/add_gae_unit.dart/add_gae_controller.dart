@@ -7,7 +7,6 @@ class AddGAEUnitController extends GetxController{
   late TextEditingController codeController = TextEditingController();
   late TextEditingController unitController = TextEditingController();
   late TextEditingController qtyController = TextEditingController();
-  late TextEditingController rateController = TextEditingController();
   late TextEditingController feeController = TextEditingController();
   late TextEditingController percentageController = TextEditingController();
 
@@ -82,8 +81,7 @@ class AddGAEUnitController extends GetxController{
   void addGAEUnitDialog(String type){
 
     Get.defaultDialog(
-      // title: "Are_you_sure".tr,
-      title: "Are_you_sure",
+      title: "Are_you_sure".tr,
       content: Column(
         children: const [
           Padding(padding: EdgeInsets.all(0)),
@@ -107,14 +105,13 @@ class AddGAEUnitController extends GetxController{
     String code = codeController.text.toString();
     String unit = unitController.text.toString();
     String qty = qtyController.text.toString();
-    String profitRate = rateController.text.toString();
     String fee = feeController.text.toString();
     String percentage = percentageController.text.toString();
     
-    if(code.isEmpty && unit.isEmpty && qty.isEmpty && profitRate.isEmpty && fee.isEmpty && percentage.isEmpty && type.isEmpty){
+    if(code.isEmpty && unit.isEmpty && qty.isEmpty && fee.isEmpty && percentage.isEmpty && type.isEmpty){
 
       Get.snackbar(
-        "Error","Please complete all textfield and button.",
+        "Error".tr,"Please complete all textfield and button.".tr,
         backgroundColor: Colors.white60,
         colorText: Colors.black,
         icon: const Icon(Icons.error, color: Colors.black),
@@ -123,7 +120,7 @@ class AddGAEUnitController extends GetxController{
     }else if (code.isEmpty){
 
       Get.snackbar(
-        "Error","Code is empty",
+        "Error".tr,"Code is empty".tr,
         backgroundColor: Colors.white60,
         colorText: Colors.black,
         icon: const Icon(Icons.error, color: Colors.black),
@@ -132,7 +129,7 @@ class AddGAEUnitController extends GetxController{
     }else if (unit.isEmpty){
 
       Get.snackbar(
-        "Error","Unit is empty",
+        "Error".tr,"Unit is empty".tr,
         backgroundColor: Colors.white60,
         colorText: Colors.black,
         icon: const Icon(Icons.error, color: Colors.black),
@@ -141,16 +138,7 @@ class AddGAEUnitController extends GetxController{
     }else if (qty.isEmpty){
 
       Get.snackbar(
-        "Error","Quantity is empty",
-        backgroundColor: Colors.white60,
-        colorText: Colors.black,
-        icon: const Icon(Icons.error, color: Colors.black),
-        snackPosition: SnackPosition.TOP,  
-      );
-    }else if (profitRate.isEmpty){
-
-      Get.snackbar(
-        "Error","Profit Rate is empty",
+        "Error".tr,"Quantity is empty".tr,
         backgroundColor: Colors.white60,
         colorText: Colors.black,
         icon: const Icon(Icons.error, color: Colors.black),
@@ -159,7 +147,7 @@ class AddGAEUnitController extends GetxController{
     }else if (fee.isEmpty){
 
       Get.snackbar(
-        "Error","Management Fee is empty",
+        "Error".tr,"Management Fee is empty".tr,
         backgroundColor: Colors.white60,
         colorText: Colors.black,
         icon: const Icon(Icons.error, color: Colors.black),
@@ -168,7 +156,7 @@ class AddGAEUnitController extends GetxController{
     }else if (percentage.isEmpty){
 
       Get.snackbar(
-        "Error","Target Percentage is empty",
+        "Error".tr,"Target Percentage is empty".tr,
         backgroundColor: Colors.white60,
         colorText: Colors.black,
         icon: const Icon(Icons.error, color: Colors.black),
@@ -177,7 +165,7 @@ class AddGAEUnitController extends GetxController{
     }else if (type.isEmpty){
 
       Get.snackbar(
-        "Error","Please select type of GAE unit",
+        "Error".tr,"Please select type of GAE unit".tr,
         backgroundColor: Colors.white60,
         colorText: Colors.black,
         icon: const Icon(Icons.error, color: Colors.black),
@@ -185,7 +173,7 @@ class AddGAEUnitController extends GetxController{
       );
     }else{
 
-      GAERemoteService.addGAEUnit(code, unit, qty, profitRate, fee, percentage, type);
+      GAERemoteService.addGAEUnit(code, unit, qty, fee, percentage, type);
     }
   }
 }

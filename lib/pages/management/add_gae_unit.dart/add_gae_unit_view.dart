@@ -114,16 +114,6 @@ class AddGAEUnitView extends GetView<AddGAEUnitController> {
               ),
               const SizedBox(height: 10),
               TextField(
-                controller: addGAEController.rateController,
-                keyboardType: TextInputType.number,
-                decoration: InputDecoration(
-                  labelText: 'Profit Rate'.tr,
-                  labelStyle: const TextStyle(
-                  )
-                ),
-              ),
-              const SizedBox(height: 10),
-              TextField(
                 controller: addGAEController.feeController,
                 keyboardType: TextInputType.phone,
                 decoration: InputDecoration(

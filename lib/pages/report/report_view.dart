@@ -16,7 +16,7 @@ class ReportView extends GetView<ManageReportController> {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Manage Report"),
+        title: Text("Report".tr),
         actions: [
           IconButton(
             onPressed: (){
@@ -32,7 +32,7 @@ class ReportView extends GetView<ManageReportController> {
           child: Column(
             children: [
               ExpansionTile(
-                title: const Text("Unit On Hand"),
+                title: Text("Unit On Hand".tr),
                 children: [
                   Container(
                     height: screenHeight/2.5,
@@ -76,7 +76,7 @@ class ReportView extends GetView<ManageReportController> {
               ),
               const SizedBox(height: 20,),
               ExpansionTile(
-                title: const Text("Sold Unit"),
+                title: Text("Sold Unit".tr),
                 children: [
                   Container(
                     height: screenHeight/2.5,

@@ -41,8 +41,8 @@ class SoldUnitTile extends StatelessWidget {
           onPressed: (){
             reportController.unsoldGAEUnitDialog(gaEunit);
           }, 
-          child: const Text("Buy",
-            style: TextStyle(color: Colors.white),)),
+          child: Text("Buy".tr,
+            style: const TextStyle(color: Colors.white),)),
       )
     );
   }

@@ -41,8 +41,8 @@ class OnHandUnitTile extends StatelessWidget {
           onPressed: (){
             reportController.soldGAEUnitDialog(gaEunit);
           }, 
-          child: const Text("Sold",
-            style: TextStyle(color: Colors.white),)),
+          child: Text("Sold".tr,
+            style: const TextStyle(color: Colors.white),)),
       )
     );
   }

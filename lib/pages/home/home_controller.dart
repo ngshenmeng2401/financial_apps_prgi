@@ -14,7 +14,7 @@ class HomeController extends GetxController{
       buyPrice: 267.21,
       sellPrice: 249.73,
       fee: 150,
-      remark: "Facility: GCA (Gold Convert Account)",
+      remark: "GCA (Gold Convert Account)",
     ),
 
     GoldPriceModel(
@@ -23,7 +23,7 @@ class HomeController extends GetxController{
       buyPrice: 259.72,
       sellPrice: 249.73,
       fee: 14.65,
-      remark: "USD 25 per unit: MYR 104.65",
+      remark: "USD 25 per unit: MYR 104.65".tr,
     ),
 
     GoldPriceModel(
@@ -32,7 +32,7 @@ class HomeController extends GetxController{
       buyPrice: 257.22,
       sellPrice: 249.73,
       fee: 329.65,
-      remark: "USD 250 per unit: MYR 1,046.50",
+      remark: "USD 250 per unit: MYR 1,046.50".tr,
     ),
 
     GoldPriceModel(

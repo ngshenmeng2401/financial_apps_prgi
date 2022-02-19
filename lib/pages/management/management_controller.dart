@@ -121,8 +121,7 @@ class ManagementController extends GetxController{
   void deleteGAEUnitDialog(GaEunit gaeunit){
 
     Get.defaultDialog(
-      // title: "Are_you_sure".tr,
-      title: "Are_you_sure",
+      title: "Are_you_sure".tr,
       content: Column(
         children: const [
           Padding(padding: EdgeInsets.all(0)),

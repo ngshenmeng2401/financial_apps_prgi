@@ -16,7 +16,7 @@ class ManagementView extends GetView<ManagementController> {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Management"),
+        title: Text("Management".tr),
         actions: [
           IconButton(
             onPressed: (){

@@ -16,7 +16,7 @@ class HomeView extends GetView<HomeController> {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Home"),
+        title: Text("Home".tr),
         actions: [
           IconButton(
             onPressed: (){

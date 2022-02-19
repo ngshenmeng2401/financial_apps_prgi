@@ -7,7 +7,20 @@ class GAERemoteService{
 
   static var client = http.Client();
 
-  static Future<String?> addGAEUnit(String code, String unit , String qty, String profitRate, String fee, String percentage, String type) async {
+  static Future<String?> addGAEUnit(String code, String unit , String qty, String fee, String percentage, String type) async {
+
+    String profitRate = "a";
+
+    if(type == "GAE 5x"){
+
+      profitRate = "4";
+    }
+    if(type == "GAE 10x"){
+
+      profitRate = "3";
+    }
+
+    // print(profitRate);
 
     var response = await client.post(
 
@@ -25,7 +38,7 @@ class GAERemoteService{
     if (response.statusCode == 200) {
       var resp = response.body;
       Get.snackbar(
-        "Add_Successful","",
+        "Add_Successful".tr,"".tr,
         backgroundColor: Colors.white60,
         colorText: Colors.black,
         icon: const Icon(Icons.message, color: Colors.black),
@@ -35,7 +48,7 @@ class GAERemoteService{
     } else {
       // show error message
       Get.snackbar(
-        "Register_Failed","Please check your input value..",
+        "Add_Failed".tr,"Please check your input value.".tr,
         backgroundColor: Colors.white60,
         colorText: Colors.black,
         icon: Icon(Icons.error, color: Colors.black),
@@ -46,7 +59,21 @@ class GAERemoteService{
     }
   }
 
-  static Future<String?> editGAEUnit(String code, String unit , String qty, String profitRate, String fee, String percentage) async {
+  static Future<String?> editGAEUnit(String code, String unit , String qty, String fee, String percentage, String type) async {
+
+    String profitRate = "a";
+
+    if(type == "GAE 5x"){
+
+      profitRate = "4";
+    }
+    if(type == "GAE 10x"){
+
+      profitRate = "3";
+    }
+
+    print(type);
+    print(profitRate);
 
     var response = await client.post(
 
@@ -58,6 +85,7 @@ class GAERemoteService{
       "profitRate" : profitRate,
       "fee" : fee,
       "percentage" : percentage,
+      "type" : type,
     });
     print(response.body);
     if (response.statusCode == 200) {
@@ -65,7 +93,7 @@ class GAERemoteService{
       if (response.body == "failed"){
 
          Get.snackbar(
-          "Edit_Failed","Please check your input value.",
+          "Edit_Failed".tr,"Please check your input value.".tr,
           backgroundColor: Colors.white60,
           colorText: Colors.black,
           icon: const Icon(Icons.error, color: Colors.black),
@@ -74,7 +102,7 @@ class GAERemoteService{
       }else{
 
         Get.snackbar(
-          "Edit Success","",
+          "Edit Success".tr,"".tr,
           backgroundColor: Colors.white60,
           colorText: Colors.black,
           icon: const Icon(Icons.message, color: Colors.black),
@@ -105,7 +133,7 @@ class GAERemoteService{
       if (response.body == "failed"){
 
          Get.snackbar(
-          "Delete_Failed","Please try again.",
+          "Delete_Failed".tr,"Please try again.".tr,
           backgroundColor: Colors.white60,
           colorText: Colors.black,
           icon: const Icon(Icons.error, color: Colors.black),
@@ -114,7 +142,7 @@ class GAERemoteService{
       }else{
 
         Get.snackbar(
-          "Delete Success","",
+          "Delete Success".tr,"".tr,
           backgroundColor: Colors.white60,
           colorText: Colors.black,
           icon: const Icon(Icons.message, color: Colors.black),
@@ -146,7 +174,7 @@ class GAERemoteService{
       if (response.body == "failed"){
 
          Get.snackbar(
-          "Failed","Please try again.",
+          "Failed".tr,"Please try again.".tr,
           backgroundColor: Colors.white60,
           colorText: Colors.black,
           icon: const Icon(Icons.error, color: Colors.black),
@@ -155,7 +183,7 @@ class GAERemoteService{
       }else{
 
         Get.snackbar(
-          "Success","",
+          "Success".tr,"".tr,
           backgroundColor: Colors.white60,
           colorText: Colors.black,
           icon: const Icon(Icons.message, color: Colors.black),
