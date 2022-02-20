@@ -1,6 +1,7 @@
 const Map<String, String> zh_HK = {
 
   "Loading":"輸入中",
+  "No Internet Connection":"無網絡連接",
 
   //Home Page
 

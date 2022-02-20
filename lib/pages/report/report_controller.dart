@@ -1,8 +1,11 @@
+import 'dart:async';
+
 import 'package:financial_apps_prgi/model/gae_unit.dart';
 import 'package:financial_apps_prgi/route/app_pages.dart';
 import 'package:financial_apps_prgi/service/gae_remote_service.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:internet_connection_checker/internet_connection_checker.dart';
 
 class ManageReportController extends GetxController{
 
@@ -13,12 +16,33 @@ class ManageReportController extends GetxController{
   var statusMsj = "Loading".obs;
   var onhandGAEUnittList = <GaEunit>[].obs;
   var soldGAEUnittList = <GaEunit>[].obs;
+  var connectionStatus = 0.obs;
+
+  late StreamSubscription<InternetConnectionStatus> _listener;
 
   @override
   void onInit() {
-    loadOnhandGAEUnits();
-    loadSoldGAEUnit();
+
+    _listener = InternetConnectionChecker().onStatusChange.listen((InternetConnectionStatus status){
+
+      switch (status){
+
+        case InternetConnectionStatus.connected:
+          connectionStatus.value = 1;
+          break;
+        case InternetConnectionStatus.disconnected:
+          connectionStatus.value = 0;
+          break;
+      }
+    });
     super.onInit();
+  }
+  
+   @override
+  void onReady() {
+    super.onReady();
+     loadOnhandGAEUnits();
+    loadSoldGAEUnit();
   }
 
   Future<void> loadOnhandGAEUnits() async {

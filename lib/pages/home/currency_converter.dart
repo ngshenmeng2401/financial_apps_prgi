@@ -55,36 +55,69 @@ class CurrencyConverter extends GetView<HomeController> {
               GetBuilder<HomeController>(
                 init: HomeController(),
                 builder: (_) {
-                  return Expanded(
-                    flex: 4,
-                    child: DropdownButton<String?>(
-                      underline: Container(
-                        height: 2,
-                        color: Colors.black,
+                  if(controller.connectionStatus == 1){
+
+                    if (controller.isLoading){
+                      return Expanded(
+                        flex: 4,
+                        child: Center(
+                          child: Text(controller.statusMsj.tr,
+                            style: const TextStyle(fontSize: 20),),
+                        ),
+                      );
+                    }else if(controller.connectionStatus == 0){
+
+                      return Expanded(
+                        flex: 4,
+                        child: Center(
+                          child: Text("No Internet Connection".tr,
+                            textAlign: TextAlign.center,
+                            style: const TextStyle(fontSize: 20),),
+                        ),
+                      );
+                    }else{
+
+                      return Expanded(
+                        flex: 4,
+                        child: DropdownButton<String?>(
+                          underline: Container(
+                            height: 2,
+                            color: Colors.black,
+                          ),
+                          isExpanded: true,
+                          menuMaxHeight: screenHeight/3,
+                          value: controller.selectCurrencyBase,
+                          elevation: 28,
+                          style: const TextStyle(fontSize: 20),
+                          onChanged: (String? newValue) {
+                            homeController.chooseCurrencyBase(newValue!);
+                          },
+                          items: [
+                            for (var data in homeController.currencyList)
+                              DropdownMenuItem(
+                                child: Text(
+                                  data,
+                                  style: const TextStyle(
+                                    color: Colors.black
+                                  ),
+                                ),
+                                value: data,
+                              )
+                          ]
+                        ),
+                      );
+                    }
+                  }else{
+                    return Expanded(
+                      flex: 4,
+                      child: Center(
+                        child: Text("No Internet Connection".tr,
+                          textAlign: TextAlign.center,
+                          style: const TextStyle(fontSize: 20),),
                       ),
-                      isExpanded: true,
-                      menuMaxHeight: screenHeight/3,
-                      value: controller.selectCurrencyBase,
-                      elevation: 28,
-                      style: const TextStyle(fontSize: 20),
-                      onChanged: (String? newValue) {
-                        homeController.chooseCurrencyBase(newValue!);
-                      },
-                      items: [
-                        for (var data in homeController.currencyList)
-                          DropdownMenuItem(
-                            child: Text(
-                              data,
-                              style: const TextStyle(
-                                color: Colors.black
-                              ),
-                            ),
-                            value: data,
-                          )
-                      ]
-                    ),
-                  );
-                },
+                    );
+                  }
+                }
               ),
               Expanded(
                 flex: 2,
@@ -97,36 +130,69 @@ class CurrencyConverter extends GetView<HomeController> {
               GetBuilder<HomeController>(
                 init: HomeController(),
                 builder: (_) {
-                  return Expanded(
-                    flex: 4,
-                    child: DropdownButton<String?>(
-                      underline: Container(
-                        height: 2,
-                        color: Colors.black,
+                  if(controller.connectionStatus == 1){
+
+                    if (controller.isLoading){
+                      return Expanded(
+                        flex: 4,
+                        child: Center(
+                          child: Text(controller.statusMsj.tr,
+                            style: const TextStyle(fontSize: 20),),
+                        ),
+                      );
+                    }else if(controller.connectionStatus == 0){
+
+                      return Expanded(
+                        flex: 4,
+                        child: Center(
+                          child: Text("No Internet Connection".tr,
+                            textAlign: TextAlign.center,
+                            style: const TextStyle(fontSize: 20),),
+                        ),
+                      );
+                    }else{
+
+                      return Expanded(
+                        flex: 4,
+                        child: DropdownButton<String?>(
+                          underline: Container(
+                            height: 2,
+                            color: Colors.black,
+                          ),
+                          isExpanded: true,
+                          menuMaxHeight: screenHeight/3,
+                          value: controller.selectCurrencyFinal,
+                          elevation: 28,
+                          style: const TextStyle(fontSize: 20),
+                          onChanged: (String? newValue) {
+                            homeController.chooseCurrencyFinal(newValue!);
+                          },
+                          items: [
+                            for (var data in homeController.currencyList)
+                              DropdownMenuItem(
+                                child: Text(
+                                  data,
+                                  style: const TextStyle(
+                                    color: Colors.black
+                                  ),
+                                ),
+                                value: data,
+                              )
+                          ]
+                        ),
+                      );
+                    }
+                  }else{
+                    return Expanded(
+                      flex: 4,
+                      child: Center(
+                        child: Text("No Internet Connection".tr,
+                          textAlign: TextAlign.center,
+                          style: const TextStyle(fontSize: 20),),
                       ),
-                      isExpanded: true,
-                      menuMaxHeight: screenHeight/3,
-                      value: controller.selectCurrencyFinal,
-                      elevation: 28,
-                      style: const TextStyle(fontSize: 20),
-                      onChanged: (String? newValue) {
-                        homeController.chooseCurrencyFinal(newValue!);
-                      },
-                      items: [
-                        for (var data in homeController.currencyList)
-                          DropdownMenuItem(
-                            child: Text(
-                              data,
-                              style: const TextStyle(
-                                color: Colors.black
-                              ),
-                            ),
-                            value: data,
-                          )
-                      ]
-                    ),
-                  );
-                },
+                    );
+                  }
+                }
               ),
             ],
           ),
@@ -147,12 +213,23 @@ class CurrencyConverter extends GetView<HomeController> {
               GetBuilder<HomeController>(
                 init: HomeController(),
                 builder: (_) {
-                  return Expanded(
+                  if(controller.connectionStatus == 1){
+
+                    return Expanded(
                     flex: 10,
                     child: Text(homeController.result.toStringAsFixed(2),
                       style: const TextStyle(fontSize: 30),
                       textAlign: TextAlign.center),
-                  );
+                    );
+                  }else{
+
+                    return const Expanded(
+                    flex: 10,
+                    child: Text("0.00",
+                      style: TextStyle(fontSize: 30),
+                      textAlign: TextAlign.center),
+                    );
+                  }
                 },
               ),
             ],

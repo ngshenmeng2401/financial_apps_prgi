@@ -1,5 +1,6 @@
 const Map<String, String> zh_Hans = {
   "Loading":"载入中",
+  "No Internet Connection":"无网络链接",
 
   //Home Page
 

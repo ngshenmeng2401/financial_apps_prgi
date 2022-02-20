@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:financial_apps_prgi/model/gae_unit.dart';
 import 'package:financial_apps_prgi/pages/management/edit_gae_unit/edit_gae_unit_view.dart';
 import 'package:financial_apps_prgi/pages/management/gae_info_view.dart';
@@ -5,6 +7,7 @@ import 'package:financial_apps_prgi/route/app_pages.dart';
 import 'package:financial_apps_prgi/service/gae_remote_service.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:internet_connection_checker/internet_connection_checker.dart';
 
 class ManagementController extends GetxController{
 
@@ -25,11 +28,33 @@ class ManagementController extends GetxController{
     "qtyD",
   ];
   var selectSorting = "Default";
+  var connectionStatus = 0.obs;
+
+  late StreamSubscription<InternetConnectionStatus> _listener;
   
   @override
   void onInit() {
+
+    _listener = InternetConnectionChecker().onStatusChange.listen((InternetConnectionStatus status){
+
+      switch (status){
+
+        case InternetConnectionStatus.connected:
+          connectionStatus.value = 1;
+          break;
+        case InternetConnectionStatus.disconnected:
+          connectionStatus.value = 0;
+          break;
+      }
+    });
+
     loadGAEUnits();
     super.onInit();
+  }
+
+  @override
+  void onClose() {
+    _listener.cancel();
   }
 
   Future<void> loadGAEUnits() async {
@@ -53,7 +78,7 @@ class ManagementController extends GetxController{
     String searchGAE = searchGAEController.text.toString();
     action = "search";
 
-    print(searchGAE);
+    // print(searchGAE);
     gaeUnittList.clear();
 
     try {
@@ -248,7 +273,7 @@ class ManagementController extends GetxController{
 
   void clickSorting(value) {
     selectSorting = value;
-    print(selectSorting);
+    // print(selectSorting);
     update();
   }
 

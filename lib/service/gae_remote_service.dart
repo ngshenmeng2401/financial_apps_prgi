@@ -72,8 +72,8 @@ class GAERemoteService{
       profitRate = "3";
     }
 
-    print(type);
-    print(profitRate);
+    // print(type);
+    // print(profitRate);
 
     var response = await client.post(
 
@@ -158,8 +158,8 @@ class GAERemoteService{
 
   static Future<String?> tradeGAEUnit(String code, String action) async {
 
-    print(code);
-    print(action);
+    // print(code);
+    // print(action);
 
     var response = await client.post(
 
@@ -199,9 +199,9 @@ class GAERemoteService{
 
   static Future<List<GaEunit>?> fetchGAEUnits(String code, String action, String sortValue) async {
 
-    print(code);
-    print(action);
-    print(sortValue);
+    // print(code);
+    // print(action);
+    // print(sortValue);
 
     var response =
       await client.post(

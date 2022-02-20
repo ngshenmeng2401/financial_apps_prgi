@@ -88,37 +88,45 @@ class ManagementView extends GetView<ManagementController> {
               Container(
                 height: screenHeight/1.4,
                 child: Obx(() {
-                  if (controller.isLoading.value) {
+                  if(controller.connectionStatus.value == 1){
+
+                    if (controller.isLoading.value) {
+                      return Center(
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            const CircularProgressIndicator(
+                              strokeWidth: 2,
+                              // color: Colors.red[200],
+                            ),
+                            const SizedBox(height: 10),
+                            Text(
+                              controller.statusMsj.toString().tr,
+                              style: const TextStyle(fontSize: 20),
+                            ),
+                          ],
+                        ),
+                      );
+                    } else if (controller.gaeUnittList.isEmpty) {
+                      return Center(
+                        child: Text(
+                        controller.statusMsj.toString(),
+                        style: const TextStyle(fontSize: 20),
+                      ));
+                    } else {
+                      return Container(
+                        padding: const EdgeInsets.fromLTRB(10, 10, 10, 10),
+                        child: ListView.builder(
+                        itemCount: managementController.gaeUnittList.length, 
+                        itemBuilder: (context, index) {
+                          return GAEUnitTIle(index, managementController.gaeUnittList[index]);
+                        }, )
+                      );
+                    }
+                  }else{
                     return Center(
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          const CircularProgressIndicator(
-                            strokeWidth: 2,
-                            // color: Colors.red[200],
-                          ),
-                          const SizedBox(height: 10),
-                          Text(
-                            controller.statusMsj.toString().tr,
-                            style: const TextStyle(fontSize: 20),
-                          ),
-                        ],
-                      ),
-                    );
-                  } else if (controller.gaeUnittList.isEmpty) {
-                    return Center(
-                      child: Text(
-                      controller.statusMsj.toString(),
-                      style: const TextStyle(fontSize: 20),
-                    ));
-                  } else {
-                    return Container(
-                      padding: const EdgeInsets.fromLTRB(10, 10, 10, 10),
-                      child: ListView.builder(
-                      itemCount: managementController.gaeUnittList.length, 
-                      itemBuilder: (context, index) {
-                        return GAEUnitTIle(index, managementController.gaeUnittList[index]);
-                      }, )
+                      child: Text("No Internet Connection".tr,
+                        style: const TextStyle(fontSize: 20),),
                     );
                   }
                 }),

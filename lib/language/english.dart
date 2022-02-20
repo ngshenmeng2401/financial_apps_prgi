@@ -1,6 +1,7 @@
 const Map<String, String> en_US = {
 
   "Loading":"Loading",
+  "No Internet Connection":"No Internet Connection",
 
   //Home Page
 

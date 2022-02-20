@@ -3,6 +3,8 @@ import 'package:financial_apps_prgi/route/app_pages.dart';
 import 'package:financial_apps_prgi/service/currency_remote_service.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:internet_connection_checker/internet_connection_checker.dart';
+import 'dart:async';
 
 class HomeController extends GetxController{
 
@@ -49,11 +51,47 @@ class HomeController extends GetxController{
   var selectCurrencyBase = 'USD', selectCurrencyFinal = 'USD';
   var currencyList = [];
   late double result = 0;
+  var isLoading = true;
+  var statusMsj = "Loading";
+
+  var connectionStatus = 1;
+
+  late StreamSubscription<InternetConnectionStatus> _listener;
 
   @override
   void onInit() {
     fetchCurrency();
+    checkInternetConnection();
     super.onInit();
+  }
+
+  @override
+  void onReady() {
+    checkInternetConnection();
+    super.onReady();
+  }
+
+  @override
+  void onClose() {
+    _listener.cancel();
+  }
+
+  void checkInternetConnection(){
+
+    _listener = InternetConnectionChecker().onStatusChange.listen((InternetConnectionStatus status){
+
+      switch (status){
+
+        case InternetConnectionStatus.connected:
+          connectionStatus = 1;
+          break;
+        case InternetConnectionStatus.disconnected:
+          connectionStatus = 0;
+          break;
+      }
+    });
+    print(connectionStatus);
+    update();
   }
 
   void chooseCurrencyBase(value){
@@ -70,27 +108,36 @@ class HomeController extends GetxController{
 
   void fetchCurrency() async {
 
-    var currency = await CurrencyRemoteServices.fetchCurrencyList();  
-    
-    currency.forEach((k, v) => currencyList.add(k));
+    try {
+      isLoading = true;
+      var currency = await CurrencyRemoteServices.fetchCurrencyList();
+      if (currency != null) {
+        currency.forEach((k, v) => currencyList.add(k));
+      } else {
+        // gaeUnittList = null;
+        statusMsj = "No_data".tr;
+      }
+    } finally {
+      isLoading = false;
+    }
     // print(currencyList);
     update();
   }
 
   void calCurrency(String currencyBase, String currencyFinal) async {
 
-    // var currencyRate = await RemoteServices.fetchCurrencyRateList();
-    // String amount = amountController.text.toString();  
-    // var baseRates = currencyRate.rates![currencyBase];
-    // var finalRates = currencyRate.rates![currencyFinal];
+    var currencyRate = await CurrencyRemoteServices.fetchCurrencyRateList();
+    String amount = amountController.text.toString();  
+    var baseRates = currencyRate.rates![currencyBase];
+    var finalRates = currencyRate.rates![currencyFinal];
 
-    // print(baseRates);
-    // print(finalRates);
-    // print(amount);
+    print(baseRates);
+    print(finalRates);
+    print(amount);
 
-    // result = (double.parse(amount) / baseRates! * finalRates!);
+    result = (double.parse(amount) / baseRates! * finalRates!);
     
-    // print(result);
+    print(result);
     update();
   }
 
